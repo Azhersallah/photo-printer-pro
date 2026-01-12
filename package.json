@@ -1,0 +1,140 @@
+{
+  "name": "photo-printer-pro",
+  "version": "1.0.1",
+  "type": "module",
+  "main": "main.cjs",
+  "description": "Professional Photo Printing Tool for print shops",
+  "author": {
+    "name": "Azher Sallah",
+    "email": "azhersallah@gmail.com"
+  },
+  "publisher": "Azher Sallah",
+  "homepage": "https://photoprinterpro.netlify.app",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Azhersallah/photo-printer-pro"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron": "concurrently \"vite\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:build": "vite build && electron-builder",
+    "electron:start": "electron ."
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/noto-kufi-arabic": "^5.2.9",
+    "@fontsource/noto-naskh-arabic": "^5.2.10",
+    "@google/generative-ai": "^0.24.1",
+    "@imgly/background-removal": "^1.7.0",
+    "@radix-ui/react-alert-dialog": "^1.1.15",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-slot": "^1.2.4",
+    "autoprefixer": "^10.4.23",
+    "bindings": "^1.5.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "electron-log": "^5.4.3",
+    "electron-updater": "^6.6.2",
+    "face-api.js": "^0.22.2",
+    "firebase-admin": "^13.6.0",
+    "heic2any": "^0.0.4",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.0.0",
+    "lucide-react": "^0.461.0",
+    "node-addon-api": "^8.5.0",
+    "pixi.js": "^8.15.0",
+    "postcss": "^8.5.6",
+    "prebuild-install": "^7.1.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.4.0",
+    "ws": "^8.19.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^8.2.2",
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-rebuild": "^3.2.9",
+    "javascript-obfuscator": "^5.1.0",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.photoprinterpro.app",
+    "productName": "Photo Printer Pro",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.cjs",
+      "package.json"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/sharp/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "build",
+        "to": "build"
+      }
+    ],
+    "fileAssociations": [
+      {
+        "ext": "pppro",
+        "name": "Photo Printer Pro Project",
+        "description": "Photo Printer Pro Project File",
+        "icon": "build/file-icon.ico",
+        "role": "Editor"
+      }
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "Azhersallah",
+      "repo": "photo-printer-pro",
+      "private": false
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico",
+      "publisherName": "Azher Sallah",
+      "legalTrademarks": "Photo Printer Pro © 2024 Azher Sallah",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "allowToChangeInstallationDirectory": false,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "perMachine": false,
+      "license": "LICENSE.txt",
+      "displayLanguageSelector": false,
+      "installerLanguages": [
+        "en_US"
+      ],
+      "shortcutName": "Photo Printer Pro"
+    },
+    "copyright": "Copyright © 2024 Azher Sallah. All rights reserved."
+  }
+}
